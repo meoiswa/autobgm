@@ -1,0 +1,15 @@
+{
+  "Author": "Meoiswa",
+  "Name": "Auto BGM",
+  "Punchline": "Like /bgm but auto",
+  "Description": "Enables automatic BGM switching based Conditions.",
+  "InternalName": "AutoBGM",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "UI",
+    "convenience",
+    "command",
+    "bgm",
+    "switch"
+  ]
+}
