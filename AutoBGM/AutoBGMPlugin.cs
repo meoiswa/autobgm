@@ -55,6 +55,7 @@ namespace AutoBGM
 
       PluginInterface.UiBuilder.Draw += DrawUI;
       PluginInterface.UiBuilder.OpenConfigUi += DrawConfigUI;
+      PluginInterface.UiBuilder.OpenMainUi += DrawConfigUI;
 
       AutoBGM = new AutoBGM(Configuration);
 

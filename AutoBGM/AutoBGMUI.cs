@@ -46,9 +46,6 @@ namespace AutoBGM
     private void DrawSection(string headerText, List<ConditionAction> actions, bool defaultValue)
     {
       var toRemove = new List<ConditionAction>();
-
-      ImGui.PushID(headerText);
-
       var isOpen = ImGui.CollapsingHeader(headerText);
       ImGui.SameLine();
       ImGui.SetCursorPosX(ImGui.GetWindowWidth() - 30);
@@ -96,9 +93,9 @@ namespace AutoBGM
         ImGui.EndTooltip();
       }
 
+      ImGui.Indent();
       if (isOpen)
       {
-        ImGui.Indent();
         ImGui.BeginTable(headerText, 3);
 
         ImGui.TableSetupColumn("Condition", ImGuiTableColumnFlags.WidthStretch);
@@ -137,7 +134,6 @@ namespace AutoBGM
             configuration.Save();
           }
         }
-
       }
 
       var mustSave = false;
@@ -150,7 +146,6 @@ namespace AutoBGM
       {
         configuration.Save();
       }
-
       ImGui.Unindent();
     }
 
