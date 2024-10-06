@@ -1,6 +1,5 @@
 using Dalamud.Game.ClientState.Conditions;
 using System;
-using System.Linq;
 
 namespace AutoBGM
 {
@@ -19,27 +18,29 @@ namespace AutoBGM
 
     public void OnCondition(ConditionFlag flag, bool value)
     {
-      if (configuration.EnableConditions.Any(x => x.Condition == flag && x.Value == value))
+      if (configuration.Enabled)
       {
-        Service.PluginLog.Debug("Condition: " + Enum.GetName(flag) + " => " + value);
-        Service.GameConfig.TryGet(Dalamud.Game.Config.SystemConfigOption.IsSndBgm, out uint IsSndBgmMuted);
-
-        if (IsSndBgmMuted == 1)
+        if (configuration.EnableConditions.Exists(x => x.Condition == flag && x.Value == value))
         {
-          Service.PluginLog.Debug("Enabling BGM because of Condition: " + Enum.GetName(flag) + " => " + value);
-          Service.GameConfig.Set(Dalamud.Game.Config.SystemConfigOption.IsSndBgm, 0);
+          Service.PluginLog.Debug("Condition: " + Enum.GetName(flag) + " => " + value);
+          Service.GameConfig.TryGet(Dalamud.Game.Config.SystemConfigOption.IsSndBgm, out uint IsSndBgmMuted);
+
+          if (IsSndBgmMuted == 1)
+          {
+            Service.PluginLog.Debug("Enabling BGM because of Condition: " + Enum.GetName(flag) + " => " + value);
+            Service.GameConfig.Set(Dalamud.Game.Config.SystemConfigOption.IsSndBgm, 0);
+          }
         }
-      }
-      else
-        if (configuration.DisableConditions.Any(x => x.Condition == flag && x.Value == value))
-      {
-        Service.PluginLog.Debug("Condition: " + Enum.GetName(flag) + " => " + value);
-        Service.GameConfig.TryGet(Dalamud.Game.Config.SystemConfigOption.IsSndBgm, out uint IsSndBgmMuted);
-
-        if (IsSndBgmMuted == 0)
+        else if (configuration.DisableConditions.Exists(x => x.Condition == flag && x.Value == value))
         {
-          Service.PluginLog.Debug("Disabling BGM because of Condition: " + Enum.GetName(flag) + " => " + value);
-          Service.GameConfig.Set(Dalamud.Game.Config.SystemConfigOption.IsSndBgm, 1);
+          Service.PluginLog.Debug("Condition: " + Enum.GetName(flag) + " => " + value);
+          Service.GameConfig.TryGet(Dalamud.Game.Config.SystemConfigOption.IsSndBgm, out uint IsSndBgmMuted);
+
+          if (IsSndBgmMuted == 0)
+          {
+            Service.PluginLog.Debug("Disabling BGM because of Condition: " + Enum.GetName(flag) + " => " + value);
+            Service.GameConfig.Set(Dalamud.Game.Config.SystemConfigOption.IsSndBgm, 1);
+          }
         }
       }
     }

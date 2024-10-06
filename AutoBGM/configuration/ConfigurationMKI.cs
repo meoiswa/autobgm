@@ -11,6 +11,8 @@ namespace AutoBGM
 
     public bool IsVisible { get; set; } = true;
 
+    public bool Enabled { get; set; } = true;
+
     public List<ConditionAction> EnableConditions { get; set; } = new List<ConditionAction>();
 
     public List<ConditionAction> DisableConditions { get; set; } = new List<ConditionAction>();

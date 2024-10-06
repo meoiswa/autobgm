@@ -172,6 +172,13 @@ namespace AutoBGM
 
     public override void Draw()
     {
+      bool enabled = configuration.Enabled;
+      if (ImGui.Checkbox("Master Enable", ref enabled))
+      {
+        configuration.Enabled = enabled;
+        configuration.Save();
+      }
+      ImGui.Separator();
       EnableSection();
       ImGui.Separator();
       DisableSection();

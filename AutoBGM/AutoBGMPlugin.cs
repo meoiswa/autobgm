@@ -15,7 +15,7 @@ namespace AutoBGM
   {
     public string Name => "Auto BGM";
 
-    private const string commandName = "/abgm";
+    private const string commandName = "/autobgm";
 
     public IDalamudPluginInterface PluginInterface { get; init; }
     public ICommandManager CommandManager { get; init; }
