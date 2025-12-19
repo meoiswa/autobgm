@@ -1,8 +1,8 @@
 {
   "Author": "Meoiswa",
   "Name": "Auto BGM",
-  "Punchline": "Like /bgm but auto",
-  "Description": "Enables automatic BGM switching based Conditions.",
+  "Punchline": "Like /bgm but automatic",
+  "Description": "Enables automatic BGM switching based Client Conditions.",
   "InternalName": "AutoBGM",
   "ApplicableVersion": "any",
   "Tags": [

@@ -178,6 +178,7 @@ namespace AutoBGM
         configuration.Enabled = enabled;
         configuration.Save();
       }
+
       ImGui.Separator();
       EnableSection();
       ImGui.Separator();
