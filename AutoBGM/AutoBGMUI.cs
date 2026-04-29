@@ -77,26 +77,23 @@ namespace AutoBGM
         {
           using (var tooltip = ImRaii.Tooltip())
           {
-            if (tooltip.Success)
+            ImGui.PushTextWrapPos(300f);
+            var text = $"BGM will be {(defaultValue ? "enabled" : "disabled")} when:\n";
+            var and = false;
+            foreach (var condtion in actions)
             {
-              ImGui.PushTextWrapPos(300f);
-              var text = $"BGM will be {(defaultValue ? "enabled" : "disabled")} when:\n";
-              var and = false;
-              foreach (var condtion in actions)
+              if (and)
               {
-                if (and)
-                {
-                  text += " or ";
-                }
-                else
-                {
-                  and = true;
-                }
-                text += $"{(condtion.Value ? "" : "not ")}{condtion.Condition}";
+                text += " or ";
               }
-              ImGui.TextWrapped(text);
-              ImGui.PopTextWrapPos();
+              else
+              {
+                and = true;
+              }
+              text += $"{(condtion.Value ? "" : "not ")}{condtion.Condition}";
             }
+            ImGui.TextWrapped(text);
+            ImGui.PopTextWrapPos();
           }
         }
 
