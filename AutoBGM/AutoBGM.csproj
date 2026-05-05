@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Authors>Meoiswa</Authors>
     <Company></Company>
-    <Version>1.5.1.0</Version>
+    <Version>1.5.1.1</Version>
     <Description>Automated BGM switching based on Client Conditions.</Description>
     <Copyright></Copyright>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
